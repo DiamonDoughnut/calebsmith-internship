@@ -38,18 +38,18 @@ const HotCollections = ({data, items}) => {
               <div id='carousel-div' className="col-lg-3 col-md-6 col-sm-6 col-xs-12 keen-slider__slide" key={item.id}>
               <div className="nft_coll">
                 <div className="nft_wrap">
-                  <Link to={`/${item.nftId}`}>
+                  <Link to={`/item-details/${item.nftId}`}>
                     <img src={item.nftImage} className="lazy img-fluid" alt={`${item.title}`} />
                   </Link>
                 </div>
                 <div className="nft_coll_pp">
-                  <Link to="/author">
+                  <Link to={`/author/${item.author}`}>
                     <img className="lazy pp-coll" src={item.authorImage} alt={`${item.author}`} />
                   </Link>
                   <i className="fa fa-check"></i>
                 </div>
                 <div className="nft_coll_info">
-                  <Link to="/explore">
+                  <Link to={`/explore/${item.title}`}>
                     <h4>{item.title}</h4>
                   </Link>
                   <span>ERC-{item.code}</span>
