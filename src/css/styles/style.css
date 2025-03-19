@@ -16813,3 +16813,31 @@ img {
 .user-liked {
   color: #ea3943;
 }
+
+.skeleton-auth-top {
+  height: 3rem;
+  width: 3rem;
+  top: 0%;
+  left: 0rem;
+  transform: translateY(-10%);
+}
+
+.skeleton-auth-info {
+  position: relative;
+  height: 2rem;
+  width: 100%;
+}
+
+.skeleton-name-top {
+  position: absolute;
+  height: 1rem;
+  width: 50%;
+}
+
+.skeleton-price-top {
+  position: absolute;
+  height: 1rem;
+  width: 25%;
+  top: 75%;
+}
+
