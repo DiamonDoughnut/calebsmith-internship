@@ -10,19 +10,20 @@ import { debounce } from "lodash";
 
 
 const Home = () => {
-  const [hotCollectionsArray, setHotCollectionsArray] = useState()
-  const [hotCollectionsItems, setHotCollectionsItems] = useState(4)
+  const [hotCollectionsArray, setHotCollectionsArray] = useState();
+  const [newItemsArray, setNewItemsArray] = useState();
+  const [shownItems, setShownItems] = useState(4)
   useEffect(() => {
     window.scrollTo(0, 0);
     const handleResize = debounce(() => {
       if (window.innerWidth > 1024) {
-        setHotCollectionsItems(4)
+        setShownItems(4)
       } else if (window.innerWidth > 768) {
-        setHotCollectionsItems(3)
+        setShownItems(3)
       } else if (window.innerWidth > 576) {
-        setHotCollectionsItems(2)
+        setShownItems(2)
       } else {
-        setHotCollectionsItems(1)
+        setShownItems(1)
       }
     }, 200)
 
@@ -31,6 +32,8 @@ const Home = () => {
       async function fetchData() {
         const hotCollectionsData = await axios.get('https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections')
         setHotCollectionsArray(hotCollectionsData.data)
+        const newItemsData = await axios.get('https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems')
+        setNewItemsArray(newItemsData.data)
       }
       fetchData();
     } catch (error) {
@@ -40,7 +43,7 @@ const Home = () => {
       window.removeEventListener('resize', handleResize)
     }
 
-  }, [hotCollectionsItems]);
+  }, [shownItems]);
 
   return (
     <div id="wrapper">
@@ -49,9 +52,9 @@ const Home = () => {
         <Landing />
         <LandingIntro />
         {hotCollectionsArray  && 
-          <HotCollections data={hotCollectionsArray} items={hotCollectionsItems} />
+          <HotCollections data={hotCollectionsArray} items={shownItems} />
         }
-        <NewItems />
+        <NewItems data={newItemsArray} items={shownItems} />
         <TopSellers />
         <BrowseByCategory />
       </div>
