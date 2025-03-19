@@ -12,6 +12,7 @@ import { debounce } from "lodash";
 const Home = () => {
   const [hotCollectionsArray, setHotCollectionsArray] = useState();
   const [newItemsArray, setNewItemsArray] = useState();
+  const [topSellersArray, setTopSellersArray] = useState();
   const [shownItems, setShownItems] = useState(4)
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,6 +35,8 @@ const Home = () => {
         setHotCollectionsArray(hotCollectionsData.data)
         const newItemsData = await axios.get('https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems')
         setNewItemsArray(newItemsData.data)
+        const topSellersData = await axios.get('https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers')
+        setTopSellersArray(topSellersData.data)
       }
       fetchData();
     } catch (error) {
@@ -55,7 +58,7 @@ const Home = () => {
           <HotCollections data={hotCollectionsArray} items={shownItems} />
         }
         <NewItems data={newItemsArray} items={shownItems} />
-        <TopSellers />
+        <TopSellers data={topSellersArray} />
         <BrowseByCategory />
       </div>
     </div>
