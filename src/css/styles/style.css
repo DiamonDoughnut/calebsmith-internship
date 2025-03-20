@@ -16841,3 +16841,10 @@ img {
   top: 75%;
 }
 
+
+.skeleton-info-adjust {
+  display: flex;
+  justify-content: end;
+  margin-right: 4px;
+}
+
