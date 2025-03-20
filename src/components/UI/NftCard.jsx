@@ -19,7 +19,9 @@ function NftCard({item, index, likedArray, handleLikes}) {
                 <i className="fa fa-check"></i>
               </Link>
             </div>
+            {item.expiryDate  && 
             <Countdown time={item.expiryDate} />
+            }
 
             <div className="nft__item_wrap">
               <div className="nft__item_extra">

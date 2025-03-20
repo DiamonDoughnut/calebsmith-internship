@@ -55,7 +55,7 @@ const ExploreItems = () => {
       </div>
       {
         new Array(8).fill(0).map((_, index) => (
-            <NftCardSkeleton />
+            <NftCardSkeleton key={index} />
         ))}
         </>
         )
