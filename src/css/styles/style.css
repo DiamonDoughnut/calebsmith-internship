@@ -16854,3 +16854,15 @@ img {
   row-gap: 8px;
 }
 
+.item-liked.item_info_like {
+  color: red;
+  background-color: #ffa5a5;
+}
+
+.item_info_like {
+  transition: all 0.5s ease;
+}
+
+.fa.item-liked-heart {
+  color: red;
+}

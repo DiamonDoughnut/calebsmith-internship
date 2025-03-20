@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AuthorBanner from "../images/author_banner.jpg";
 import AuthorItems from "../components/author/AuthorItems";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../components/UI/Skeleton";
 
@@ -11,6 +11,7 @@ const Author = () => {
   const [loading, setLoading] = useState(true);
   const [followed, setFollowed] = useState(false);
   useEffect(() => {
+    window.scrollTo(0, 0)
     try {
       setLoading(true)
       const searchString = `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${id}`
@@ -27,7 +28,6 @@ const Author = () => {
 
   function handleFollow() {
     setFollowed((prev) => {
-      console.log(!prev)
       return !prev;
     })
     
