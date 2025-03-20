@@ -52,7 +52,7 @@ const NewItems = ({data, items}) => {
           >
           {data?.map((item, index) => (
             item ? (
-            <NftCard item={item} index={index} likedArray={likedArray} handleLikes={handleLikes} />
+            <NftCard key={item.id} item={item} index={index} likedArray={likedArray} handleLikes={handleLikes} />
             ) : (
               <div id="carousel-div" className="col-lg-3 col-md-6 col-sm-6 col-xs-12 keen-slider__slide skeleton-wrapper" key={item.id}>
               <div className="nft__item">
