@@ -7,14 +7,17 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
 function App() {
+
+  
+
   return (
     <Router>
       <Nav />
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/author/:id" element={<Author />} />
         <Route path="/item-details/:id" element={<ItemDetails />} />
+        <Route path='/*' element={<Home />} />
       </Routes>
       <Footer />
     </Router>

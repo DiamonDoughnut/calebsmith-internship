@@ -7,6 +7,7 @@ import NewItems from "../components/home/NewItems";
 import TopSellers from "../components/home/TopSellers";
 import axios from "axios";
 import { debounce } from "lodash";
+import { useNavigate } from "react-router-dom";
 
 
 const Home = () => {
@@ -14,8 +15,10 @@ const Home = () => {
   const [newItemsArray, setNewItemsArray] = useState();
   const [topSellersArray, setTopSellersArray] = useState();
   const [shownItems, setShownItems] = useState(4)
+  const navigate = useNavigate()
   useEffect(() => {
     window.scrollTo(0, 0);
+    navigate('/')
     const handleResize = debounce(() => {
       if (window.innerWidth > 1024) {
         setShownItems(4)
