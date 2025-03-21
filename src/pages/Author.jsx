@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import AuthorBanner from "../images/author_banner.jpg";
 import AuthorItems from "../components/author/AuthorItems";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../components/UI/Skeleton";
+import Aos from 'aos';
+import 'aos/dist/aos.css'; 
 
 const Author = () => {
+  Aos.init()
   const { id } = useParams()
   const [authorData, setAuthorData] = useState();
   const [loading, setLoading] = useState(true);
@@ -45,6 +48,7 @@ const Author = () => {
           className="text-light"
           data-bgimage="url(images/author_banner.jpg) top"
           style={{ background: `url(${AuthorBanner}) top` }}
+          data-aos="fade-down" data-aos-duration='1000' data-aos-delay="50"
         ></section>
 
         <section aria-label="section">
@@ -53,7 +57,7 @@ const Author = () => {
               <div className="col-md-12">
                 <div className="d_profile de-flex">
                   <div className="de-flex-col">
-                    <div className="profile_avatar">
+                    <div className="profile_avatar" data-aos="fade-right" data-aos-duration='1000' data-aos-delay="50" >
                       <Skeleton height={'6rem'} width={"6rem"} borderRadius={'50%'} />
                       <div className="profile_name">
                         <div className="skeleton-author-name">
@@ -65,7 +69,7 @@ const Author = () => {
                     </div>
                   </div>
                   <div className="profile_follow de-flex">
-                    <div className="de-flex-col">
+                    <div className="de-flex-col" data-aos="fade-left" data-aos-duration='1000' data-aos-delay="50" >
                       <Skeleton height={'3rem'} width={'12rem'} borderRadius={'0'} />
                     </div>
                   </div>
@@ -96,6 +100,7 @@ const Author = () => {
           className="text-light"
           data-bgimage="url(images/author_banner.jpg) top"
           style={{ background: `url(${AuthorBanner}) top` }}
+          data-aos="fade-down" data-aos-duration='1000' data-aos-delay="550"
         ></section>
 
         <section aria-label="section">
@@ -104,7 +109,7 @@ const Author = () => {
               <div className="col-md-12">
                 <div className="d_profile de-flex">
                   <div className="de-flex-col">
-                    <div className="profile_avatar">
+                    <div className="profile_avatar" data-aos="fade-right" data-aos-duration='1000' data-aos-delay="50">
                       <img src={authorData?.authorImage} alt="" />
 
                       <i className="fa fa-check"></i>
@@ -123,7 +128,7 @@ const Author = () => {
                     </div>
                   </div>
                   <div className="profile_follow de-flex">
-                    <div className="de-flex-col">
+                    <div className="de-flex-col" data-aos="fade-left" data-aos-duration='1000' data-aos-delay="50" >
                       <div className="profile_follower">{(followed ? authorData?.followers + 1 : authorData?.followers) + ' followers'}</div>
                       <button onClick={handleFollow} className="btn-main">
                         {followed ? 'Unfollow' : 'Follow'}

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useKeenSlider } from "keen-slider/react";
 import Arrow from "./CarouselArrow";
-import Countdown from "./Countdown";
 import NftCard from "../UI/NftCard";
+import Aos from "aos";
+import 'aos/dist/aos.css'; 
 
 const NewItems = ({data, items}) => {
-
+  Aos.init();
   const [likedArray, setLikedArray] = useState(new Array())
 
   function handleLikes(index) {
@@ -96,7 +96,7 @@ const NewItems = ({data, items}) => {
             )
           ))}
           {loaded && instanceRef.current && (
-              <>
+              <div>
                 <Arrow
                   left
                   onClick={() =>
@@ -109,7 +109,7 @@ const NewItems = ({data, items}) => {
                     instanceRef.current?.next()
                   }
                 />
-              </>
+              </div>
             )}
           </div>
         </div>

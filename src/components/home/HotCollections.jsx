@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import Arrow from "./CarouselArrow";
+import Aos from "aos";
+import 'aos/dist/aos.css'; 
 
 const HotCollections = ({ data, items }) => {
+  Aos.init()
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
@@ -35,14 +38,14 @@ const HotCollections = ({ data, items }) => {
             ref={sliderRef}
             className='keen-slider'
           >
-            {data?.map((item) =>
+            {data?.map((item, index) =>
               item ? (
                 <div
                   id='carousel-div'
                   className='col-lg-3 col-md-6 col-sm-6 col-xs-12 keen-slider__slide'
                   key={item.id}
                 >
-                  <div className='nft_coll'>
+                  <div className='nft_coll' data-aos="fade-up" data-aos-delay={200 * index}>
                     <div className='nft_wrap'>
                       <Link to={`/item-details/${item.nftId}`}>
                         <img
