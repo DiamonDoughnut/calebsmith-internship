@@ -14,10 +14,11 @@ const Explore = () => {
           id="subheader"
           className="text-light"
           style={{ background: `url("${SubHeader}") top` }}
+          data-aos="fade-down" data-aos-duration='1000' data-aos-delay="50"
         >
-          <div className="center-y relative text-center">
+          <div className="center-y relative text-center" >
             <div className="container">
-              <div className="row">
+              <div className="row" >
                 <div className="col-md-12 text-center">
                   <h1>Explore</h1>
                 </div>
