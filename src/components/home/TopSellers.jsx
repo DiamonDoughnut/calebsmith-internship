@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
+import Aos from "aos";
+import 'aos/dist/aos.css'; 
 
 const TopSellers = ({data}) => {
+  Aos.init();
   const fallback = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
   return (
     <section id="section-popular" className="pb-5">
@@ -18,7 +20,7 @@ const TopSellers = ({data}) => {
             <ol className="author_list">
               { data ? (
                 data?.map((item, index) => (
-                  <li key={item.id}>
+                  <li key={item.id} data-aos='fade-up' data-aos-delay={100 * index}>
                     <div className="author_list_pp">
                       <Link to={`/author/${item.authorId}`}>
                         <img

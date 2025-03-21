@@ -8,9 +8,11 @@ import TopSellers from "../components/home/TopSellers";
 import axios from "axios";
 import { debounce } from "lodash";
 import { useNavigate } from "react-router-dom";
+import Aos from "aos";
 
 
 const Home = () => {
+  Aos.init();
   const [hotCollectionsArray, setHotCollectionsArray] = useState();
   const [newItemsArray, setNewItemsArray] = useState();
   const [topSellersArray, setTopSellersArray] = useState();
@@ -49,7 +51,7 @@ const Home = () => {
       window.removeEventListener('resize', handleResize)
     }
 
-  }, [shownItems]);
+  }, [shownItems, navigate]);
 
   return (
     <div id="wrapper">
