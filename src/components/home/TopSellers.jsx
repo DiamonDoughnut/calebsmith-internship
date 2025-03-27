@@ -20,7 +20,7 @@ const TopSellers = ({data}) => {
             <ol className="author_list">
               { data ? (
                 data?.map((item, index) => (
-                  <li key={item.id} data-aos='fade-up' data-aos-delay={100 * index}>
+                  <li key={item.id} data-aos='fade-up' data-aos-delay={250 * ((index % 3) / 1)} data-aos-offset={-300 * ((index % 3) / 1)}>
                     <div className="author_list_pp">
                       <Link to={`/author/${item.authorId}`}>
                         <img
